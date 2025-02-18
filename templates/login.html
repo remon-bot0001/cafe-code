@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+</head>
+<body>
+    <h2>ログイン</h2>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form action="/auth/login" method="post">
+        <label for="username">ユーザー名:</label>
+        <input type="text" name="username" required><br>
+        <label for="password">パスワード:</label>
+        <input type="password" name="password" required><br>
+        <button type="submit">ログイン</button>
+    </form>
+    <p>アカウントがない場合は、<a href="/auth/register">こちらから登録</a></p>
+</body>
+</html>

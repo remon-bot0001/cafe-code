@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>商品編集</title>
+</head>
+<body>
+    <h2>商品編集</h2>
+    <form action="/edit_product/{{ product.id }}" method="post">
+        商品名: <input type="text" name="product_name" value="{{ product.name }}" required><br>
+        説明: <input type="text" name="product_description" value="{{ product.description }}"><br>
+        カテゴリー: <input type="text" name="product_category" value="{{ product.category }}"><br>
+        価格: <input type="number" name="product_price" value="{{ product.price }}" required><br>
+        <button type="submit">更新</button>
+    </form>
+    
+    <form action="/delete_product/{{ product.id }}" method="post" onsubmit="return confirm('本当に削除しますか？');">
+        <button type="submit" style="color: red;">削除</button>
+    </form>
+
+    <!-- 商品一覧に戻るリンク -->
+    <a href="{{ url_for('products.products') }}">商品一覧に戻る</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品追加</title>
+</head>
+<body>
+    <h1>商品追加</h1>
+    <form method="POST">
+        <label for="product_name">商品名:</label>
+        <input type="text" id="product_name" name="product_name" required><br>
+
+        <label for="product_description">商品説明:</label>
+        <textarea id="product_description" name="product_description"></textarea><br>
+
+        <label for="product_category">商品カテゴリー:</label>
+        <input type="text" id="product_category" name="product_category"><br>
+
+        <label for="product_price">価格:</label>
+        <input type="number" id="product_price" name="product_price" required><br>
+
+        <label for="stock_quantity">在庫数:</label>
+        <input type="number" id="stock_quantity" name="stock_quantity" required><br>
+
+        <button type="submit">登録</button>
+    </form>
+
+    <!-- 商品一覧に戻るリンク -->
+    <a href="{{ url_for('products.products') }}">商品一覧に戻る</a>
+</body>
+</html>

@@ -1,38 +1,34 @@
-<!-- stock_history.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫履歴一覧</title>
+    <title>在庫履歴</title>
 </head>
 <body>
-    <h1>在庫履歴一覧</h1>
-    <table border="1">
+    <h1>在庫履歴</h1>
+    <table>
         <thead>
             <tr>
-                <th>商品名</th>
+                <th>取引タイプ</th>
                 <th>数量</th>
-                <th>操作</th>
+                <th>商品名</th>
+                <th>ユーザーID</th>
                 <th>日時</th>
-                <th>編集</th>
             </tr>
         </thead>
         <tbody>
-            {% for entry in stock_history_data %}
-            <tr>
-                <td>{{ entry.name }}</td>
-                <td>{{ entry.quantity }}</td>
-                <td>{{ entry.operation }}</td>
-                <td>{{ entry.timestamp }}</td>
-                <td>
-                    <a href="{{ url_for('edit_stock_history', stock_history_id=entry.id) }}">編集</a>
-                </td>
-            </tr>
+            {% for entry in stock_history_entries %}
+                <tr>
+                    <td>{{ entry.transaction_type }}</td>
+                    <td>{{ entry.quantity }}</td>
+                    <td>{{ entry.product.name }}</td>
+                    <td>{{ entry.user_id }}</td>
+                    <td>{{ entry.id }}</td> <!-- こちらを修正 -->
+                </tr>
             {% endfor %}
         </tbody>
     </table>
-    <br>
-    <a href="{{ url_for('index') }}">トップページに戻る</a>
+    <a href="{{ url_for('products.products') }}">商品一覧に戻る</a> <!-- 商品一覧へのリンクを追加 -->
 </body>
 </html>
